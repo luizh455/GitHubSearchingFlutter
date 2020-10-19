@@ -71,7 +71,7 @@ class MainMenu extends StatelessWidget {
                 ),
                 child: RoundedButton(
                   text: "Sobre",
-                  function: () => UserDialog.backError(context),
+                  function: () => Get.toNamed("/about"),
                 ),
               ),
             ],
