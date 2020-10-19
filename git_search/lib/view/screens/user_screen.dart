@@ -21,24 +21,22 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Informações do usuário:",),
+        backgroundColor: Colors.black,
+      ),
       body: SafeArea(
           child: ListView(
         children: [
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: 0),
                 child: GetX<UserController>(
                   builder: (_) {
                     return Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      height: MediaQuery.of(context).size.height / 2,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage("${_.obsTest.value.avatarUrl}"),
-                            fit: BoxFit.fitWidth),
-                      ),
+                      width: MediaQuery.of(context).size.width ,
+                      child: Image.network("${_.obsTest.value.avatarUrl}"),
                     );
                   },
                 ),
@@ -46,14 +44,6 @@ class _UserScreenState extends State<UserScreen> {
               Card(
                 child: Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 8),
-                      child: Text(
-                        "Informações do usuário:",
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.w600),
-                      ),
-                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 8),
                       child: Card(

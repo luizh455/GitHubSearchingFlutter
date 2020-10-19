@@ -33,4 +33,33 @@ class UserDialog {
           );
         });
   }
+
+  static void Loading(BuildContext context,
+      {String text, Function onTap}) async {
+    showModalBottomSheet(
+        isScrollControlled: false,
+        isDismissible: false,
+        context: context,
+        builder: (context) {
+          return GestureDetector(
+            onTap: Get.back,
+            child: Container(
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(backgroundColor: Colors.black,),
+                    Text(
+                      "Buscando dados...",
+                      style:
+                      TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                )),
+          );
+        });
+  }
 }

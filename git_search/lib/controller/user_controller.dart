@@ -12,6 +12,7 @@ class UserController extends GetxController {
 
 
   searchUser(String user, BuildContext context) async {
+
     var userResponse;
     var reposResponse;
     var orgsResponse;
@@ -21,10 +22,12 @@ class UserController extends GetxController {
     if (user == "" || user == null) { // Erro caso as inputs no campo sejam inválidas
       UserDialog.backError(context, text: "O campo usuário não pode ser vazio");
     } else {
+      UserDialog.Loading(context);
       userResponse = await getUserInfo.getUser(user, "userinfo");
       if (userResponse == null ||
           userResponse.toString().contains("connectionerror") ||
           userResponse.toString().contains("othererror")) { // Erro caso ocorra alguma exception de conexão
+        Get.back();
         UserDialog.backError(context,
             text: "Verifique a sua conexão com a internet",
             onTap: () => Get.back());
@@ -44,6 +47,7 @@ class UserController extends GetxController {
         // userObs.setRepos(reposResponse);
         List<dynamic> reposList =  reposResponse;
         //obsTest.value=userObs;
+        Get.back();
         Get.toNamed('/user');
       }
     }
