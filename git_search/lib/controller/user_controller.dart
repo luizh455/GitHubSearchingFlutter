@@ -6,15 +6,14 @@ import 'package:git_search/view/dialogs/dialogs.dart';
 
 //principal controller do app, armazena todas as informações do usuário
 class UserController extends GetxController {
-  //User userObs;
   SingleUserInfo getUserInfo = SingleUserInfo();
-  var obsTest = User().obs;
+  var userObs = User().obs;
 
   searchUser(String user, BuildContext context) async {
     var userResponse;
     var reposResponse;
     var orgsResponse;
-    obsTest = User().obs;
+    userObs = User().obs;
 
     if (user == "" || user == null) {
       // Erro caso as inputs no campo sejam inválidas
@@ -34,9 +33,9 @@ class UserController extends GetxController {
         // Caso a primeira requisição seja concluida com sucesso retornando um usuário
         reposResponse = await getUserInfo.getUser(user, "reposinfo");
         orgsResponse = await getUserInfo.getUser(user, "orgsinfo");
-        obsTest.value.toJson(userResponse);
-        obsTest.value.setOrgs(orgsResponse);
-        obsTest.value.setRepos(reposResponse);
+        userObs.value.toJson(userResponse);
+        userObs.value.setOrgs(orgsResponse);
+        userObs.value.setRepos(reposResponse);
         List<dynamic> reposList = reposResponse;
         Get.back();
         Get.toNamed('/user');

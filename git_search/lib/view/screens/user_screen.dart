@@ -38,7 +38,7 @@ class _UserScreenState extends State<UserScreen> {
                   builder: (_) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.network("${_.obsTest.value.avatarUrl}"),
+                      child: Image.network("${_.userObs.value.avatarUrl}"),
                     );
                   },
                 ),
@@ -57,7 +57,7 @@ class _UserScreenState extends State<UserScreen> {
                                 style: TextStyle(fontSize: 18),
                               ),
                               subtitle: Text(
-                                "${_.obsTest.value.name} / ${_.obsTest.value.login}",
+                                "${_.userObs.value.name} / ${_.userObs.value.login}",
                                 style: TextStyle(fontSize: 18),
                               ),
                             );
@@ -76,7 +76,7 @@ class _UserScreenState extends State<UserScreen> {
                           subtitle: GetX<UserController>(
                             builder: (_) {
                               return Text(
-                                "${_.obsTest.value.organizations}",
+                                "${_.userObs.value.organizations}",
                                 style: TextStyle(fontSize: 18),
                               );
                             },
@@ -94,7 +94,7 @@ class _UserScreenState extends State<UserScreen> {
                           ),
                           subtitle: GetX<UserController>(
                             builder: (_) {
-                              return Text("${_.obsTest.value.location}",
+                              return Text("${_.userObs.value.location}",
                                   style: TextStyle(fontSize: 18));
                             },
                           ),
@@ -112,7 +112,7 @@ class _UserScreenState extends State<UserScreen> {
                           subtitle: GetX<UserController>(
                             builder: (_) {
                               return Text(
-                                "${_.obsTest.value.stars}",
+                                "${_.userObs.value.stars}",
                                 style: TextStyle(fontSize: 18),
                               );
                             },
@@ -134,11 +134,11 @@ class _UserScreenState extends State<UserScreen> {
                         builder: (_) {
                           return Column(
                               children: List.generate(
-                                  _.obsTest.value.repos.length, (index) {
+                                  _.userObs.value.repos.length, (index) {
                             return RepoCard(
-                                _.obsTest.value.repos[index].name,
-                                _.obsTest.value.repos[index].description,
-                                _.obsTest.value.repos[index].stars);
+                                _.userObs.value.repos[index].name,
+                                _.userObs.value.repos[index].description,
+                                _.userObs.value.repos[index].stars);
                           }));
                         },
                       ),
