@@ -5,15 +5,18 @@ import 'dart:core';
 
 class User {
   String login; //: "luizh455",
-  String avatarUrl; //: "https://avatars0.githubusercontent.com/u/9135372?v=4", avatar_url
+  String
+      avatarUrl; //: "https://avatars0.githubusercontent.com/u/9135372?v=4", avatar_url
   String name;
+
 //organização, localização, número de seguidores, repositórios e stars); FALTA O NUMERO DE STARS
   String location; //": null,
   String followers; //": 2,
   String organizations;
   List<Repository> repos;
-  int stars=0;
+  int stars = 0;
 
+//Insere os dados da requisição de dados do usuário na estrutura User
   toJson(Map<String, dynamic> json) {
     json["login"] != null
         ? login = json["login"].toString()
@@ -32,6 +35,7 @@ class User {
         : name = "Não informado.";
   }
 
+  //Insere a resposta da requisição na variável de organizaçoes
   setOrgs(List<dynamic> listOrgs) {
     organizations = "";
     if (listOrgs.length == 0) {
@@ -46,6 +50,7 @@ class User {
     }
   }
 
+// Insere a resposta da requisição na estrutura de lista de repositórios
   setRepos(List<dynamic> listRepos) {
     repos = List<Repository>();
 
@@ -61,11 +66,11 @@ class User {
             name: listRepos[i]["name"],
             stars: listRepos[i]["stargazers_count"],
             url: listRepos[i]["html_url"],
-            description: listRepos[i]["description"]!=null?listRepos[i]["description"]:"Sem Descrição"));
-        stars+= listRepos[i]["stargazers_count"];
+            description: listRepos[i]["description"] != null
+                ? listRepos[i]["description"]
+                : "Sem Descrição"));
+        stars += listRepos[i]["stargazers_count"];
       }
-
-      //name: listRepos[i]["name"]!=null?listRepos[i]["name"]:"Não informado.",forma de tratar null
     }
     print("REPOS");
     repos.length;
@@ -73,11 +78,11 @@ class User {
       print(repos[i].name);
     }
     print("REPOS");
-    //_sortRepos();
+    _sortRepos();
   }
 
-  _sortRepos()
+  _sortRepos() //Ordena o vetor de forma decrescente
   {
-    repos.sort((a,b) => a.stars.compareTo(b.stars));
+    repos.sort((b, a) => a.stars.compareTo(b.stars));
   }
 }

@@ -15,8 +15,6 @@ void main() {
       GetPage(name: '/menu', page: () => MainMenu(), binding: Dependencies()),
       GetPage(name: '/user', page: () => UserScreen(), binding: Dependencies()),
       GetPage(name: '/about', page: () => About()),
-
-
     ],
   ));
 }

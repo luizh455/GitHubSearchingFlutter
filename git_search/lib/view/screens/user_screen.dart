@@ -22,7 +22,9 @@ class _UserScreenState extends State<UserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informações do usuário:",),
+        title: Text(
+          "Informações do usuário",
+        ),
         backgroundColor: Colors.black,
       ),
       body: SafeArea(
@@ -35,7 +37,7 @@ class _UserScreenState extends State<UserScreen> {
                 child: GetX<UserController>(
                   builder: (_) {
                     return Container(
-                      width: MediaQuery.of(context).size.width ,
+                      width: MediaQuery.of(context).size.width,
                       child: Image.network("${_.obsTest.value.avatarUrl}"),
                     );
                   },

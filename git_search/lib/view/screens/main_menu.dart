@@ -8,7 +8,6 @@ class MainMenu extends StatelessWidget {
   final userInput = new TextEditingController(text: "");
   final UserController userController = Get.find();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +49,7 @@ class MainMenu extends StatelessWidget {
                   controller: userInput,
                   decoration: InputDecoration(
                     hintText: "Insira o nome de usuário",
-                    border:  OutlineInputBorder(
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                         borderSide: BorderSide(color: Colors.black)),
                   ),
@@ -60,9 +59,8 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.only(top: 30),
                 child: RoundedButton(
                   text: "Buscar usuário",
-                  function: () => {
-                    userController.searchUser(userInput.text, context)
-                  },
+                  function: () =>
+                      {userController.searchUser(userInput.text, context)},
                 ),
               ),
               Padding(

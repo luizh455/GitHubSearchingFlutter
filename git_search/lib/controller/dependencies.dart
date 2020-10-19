@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class Dependencies implements Bindings {
   @override
-  void dependencies() {
+  void dependencies() {//Instancia principal do UserController
     Get.put(UserController());
   }
 }

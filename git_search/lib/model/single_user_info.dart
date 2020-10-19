@@ -8,15 +8,15 @@ class SingleUserInfo {
   Dio dio;
   BaseOptions options;
 
-  //luizhFuture<Map<String, String>>
+  //Requisição http com exceptions tratadas
   getUser(String user, String type) async {
-    String selectedUser="";
+    String selectedUser = "";
     switch (type) {
       case "userinfo":
         selectedUser = user;
         break;
       case "reposinfo":
-        selectedUser =user + "/repos";
+        selectedUser = user + "/repos";
         break;
       case "orgsinfo":
         selectedUser = user + "/orgs";
@@ -29,16 +29,14 @@ class SingleUserInfo {
       receiveDataWhenStatusError: true,
     );
 
-    print("$_baseUrl"+"$selectedUser");
+    print("$_baseUrl" + "$selectedUser");
     try {
       Response response = await Dio(options).get(
-        "$_baseUrl"+"$selectedUser",
+        "$_baseUrl" + "$selectedUser",
       );
       print(response.data);
       return response.data;
     } on DioError catch (err) {
-      print(err.type);
-      print(err.response.data);
       if (err.type == DioErrorType.RECEIVE_TIMEOUT) {
         return "connectionerror";
       }
