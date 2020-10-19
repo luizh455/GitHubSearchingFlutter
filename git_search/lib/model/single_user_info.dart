@@ -34,9 +34,11 @@ class SingleUserInfo {
       Response response = await Dio(options).get(
         "$_baseUrl"+"$selectedUser",
       );
+      print(response.data);
       return response.data;
     } on DioError catch (err) {
       print(err.type);
+      print(err.response.data);
       if (err.type == DioErrorType.RECEIVE_TIMEOUT) {
         return "connectionerror";
       }

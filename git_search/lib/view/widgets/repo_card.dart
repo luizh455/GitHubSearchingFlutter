@@ -27,7 +27,7 @@ class _RepoCardState extends State<RepoCard> {
                     Text("Nome: ",textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
                     Text(widget.name,textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),),
                     Text("Descrição: ",textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
-                    ( Text(widget.description,textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),)),
+                    Text(widget.description,textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),),
                     Text("Estrelas: ",textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
                     Text(widget.stars.toString(),textAlign: TextAlign.start, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),),
 

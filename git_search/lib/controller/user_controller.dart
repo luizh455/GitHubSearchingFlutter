@@ -5,8 +5,9 @@ import 'package:git_search/struct/user.dart';
 import 'package:git_search/view/dialogs/dialogs.dart';
 
 class UserController extends GetxController {
-  User userObs;
+  //User userObs;
   SingleUserInfo getUserInfo = SingleUserInfo();
+  var obsTest = User().obs;
 
 
 
@@ -14,7 +15,8 @@ class UserController extends GetxController {
     var userResponse;
     var reposResponse;
     var orgsResponse;
-    userObs = User();
+    //userObs = User();
+    obsTest= User().obs;
 
     if (user == "" || user == null) { // Erro caso as inputs no campo sejam inválidas
       UserDialog.backError(context, text: "O campo usuário não pode ser vazio");
@@ -24,7 +26,7 @@ class UserController extends GetxController {
           userResponse.toString().contains("connectionerror") ||
           userResponse.toString().contains("othererror")) { // Erro caso ocorra alguma exception de conexão
         UserDialog.backError(context,
-            text: "Verifique a sua coneção com a internet",
+            text: "Verifique a sua conexão com a internet",
             onTap: () => Get.back());
       } else { // Caso a primeira requisição seja concluida com sucesso retornando um usuário
        // print(userResponse);
@@ -32,14 +34,16 @@ class UserController extends GetxController {
 
         //print(reposResponse);
         orgsResponse = await getUserInfo.getUser(user, "orgsinfo");
-        print(orgsResponse);
-        userObs.toJson(userResponse);
-        userObs.setOrgs(orgsResponse);
-        userObs.setRepos(reposResponse);
+
+        obsTest.value.toJson(userResponse);
+        obsTest.value.setOrgs(orgsResponse);
+        obsTest.value.setRepos(reposResponse);
+        //
+        // userObs.toJson(userResponse);
+        // userObs.setOrgs(orgsResponse);
+        // userObs.setRepos(reposResponse);
         List<dynamic> reposList =  reposResponse;
-        print ("list number");
-        print(reposList.length);
-        Get.put(userObs);
+        //obsTest.value=userObs;
         Get.toNamed('/user');
       }
     }
